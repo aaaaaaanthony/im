@@ -28,7 +28,7 @@ public class PushManager {
                     SocketChannel channels = nettyChannelManager.getChannels(userId);
 
                     if (channels != null) {
-                        byte[] responseBuf = "未认证用户,不能处理请求".getBytes();
+                        byte[] responseBuf = "未认证用户,不能处理请求$_".getBytes();
                         ByteBuf buffer = Unpooled.buffer(responseBuf.length);
                         buffer.writeBytes(responseBuf);
                         channels.writeAndFlush(buffer);

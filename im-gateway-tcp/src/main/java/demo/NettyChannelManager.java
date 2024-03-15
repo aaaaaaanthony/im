@@ -11,7 +11,7 @@ public class NettyChannelManager {
     }
 
     public boolean exist(String userId) {
-        return channels.contains(userId);
+        return channels.containsKey(userId);
     }
 
     static class Singleton{

@@ -8,6 +8,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
 
 public class ImClient {
 
@@ -27,6 +29,9 @@ public class ImClient {
         client.handler(new ChannelInitializer<SocketChannel>() {
             @Override
             protected void initChannel(SocketChannel socketChannel) throws Exception {
+                ByteBuf delimit = Unpooled.copiedBuffer("$_".getBytes());
+                socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, delimit));
+                socketChannel.pipeline().addLast(new StringDecoder());
                 socketChannel.pipeline().addLast(new ImClientHandler());
             }
         });
@@ -49,7 +54,7 @@ public class ImClient {
     }
 
     public void auth(String userId,String token){
-        byte[] messageBytes = ("发起用户认证|"+userId+"|"+token).getBytes();
+        byte[] messageBytes = ("发起用户认证|"+userId+"|"+token+"$_").getBytes();
         ByteBuf messageBuf = Unpooled.buffer(messageBytes.length);
         messageBuf.writeBytes(messageBytes);
         socketChannel.writeAndFlush(messageBuf);
@@ -60,7 +65,7 @@ public class ImClient {
      * 发送消息
      */
     public void send(String userId,String msg) {
-        byte[] messageBytes = (msg + "|" + userId).getBytes();
+        byte[] messageBytes = (msg + "|" + userId+"$_").getBytes();
         ByteBuf messageBuf = Unpooled.buffer(messageBytes.length);
         messageBuf.writeBytes(messageBytes);
         socketChannel.writeAndFlush(messageBuf);

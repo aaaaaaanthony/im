@@ -1,6 +1,5 @@
 package demo;
 
-import com.sun.org.apache.xpath.internal.operations.String;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
@@ -12,10 +11,7 @@ public class ImClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ByteBuf messageByteBuf = (ByteBuf) msg;
-        byte[] bytes = new byte[messageByteBuf.readableBytes()];
-        messageByteBuf.readBytes(bytes);
-        java.lang.String message = new java.lang.String(bytes);
+        String message = (String) msg;
         System.out.println("TCP收到的消息:"+message);
     }
 
