@@ -20,15 +20,16 @@ public class GatewayTcpHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         SocketChannel channel = (SocketChannel) ctx.channel();
-        NettyChannelManager instance = NettyChannelManager.getInstance();
+        ClientManager instance = ClientManager.getInstance();
         instance.removeChannel(channel);
         System.out.println("断开连接:" + ctx.channel().remoteAddress().toString());
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        NettyChannelManager nettyChannelManager = NettyChannelManager.getInstance();
-        String message = (String)msg;
+        ClientManager clientManager = ClientManager.getInstance();
+        ByteBuf msg1 = (ByteBuf) msg;
+
         System.out.println("服务端收到消息===>"+message);
 
         if (message.startsWith("发起用户认证")) {
@@ -38,12 +39,12 @@ public class GatewayTcpHandler extends ChannelInboundHandlerAdapter {
 
             // 如果认证成功的话,就可以把这个连接缓存起来了
             String userId = message.split("\\|")[1];
-            nettyChannelManager.addChannel(userId, (SocketChannel) ctx.channel());
+            clientManager.addClient(userId, (SocketChannel) ctx.channel());
             System.out.println("对用户发起的认证确认完毕,缓存客户端长连接:" + ctx.channel().remoteAddress().toString());
 
         }else {
             String userId = message.split("\\|")[1];
-            if (nettyChannelManager.exist(userId)) {
+            if (clientManager.isClientConnected(userId)) {
                 System.out.println("未认证用户,不能处理请求");
                 byte[] responseBuf = "未认证用户,不能处理请求$_".getBytes();
                 ByteBuf buffer = Unpooled.buffer(responseBuf.length);

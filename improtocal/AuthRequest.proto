@@ -1,0 +1,12 @@
+
+syntax="proto3";
+
+option java_package="demo.protocal";
+option java_outer_classname="AuthRequestProto";
+
+message AuthRequest{
+   string uid=1;
+   string token =2;
+   int64 timestamp=3;
+}
+

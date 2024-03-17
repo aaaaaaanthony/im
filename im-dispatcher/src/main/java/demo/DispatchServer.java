@@ -1,7 +1,5 @@
 package demo;
 
-import demo.dispatcher.DispatcherInstanceManager;
-import demo.push.PushManager;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -13,14 +11,12 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 
-public class GatewayTcpServer {
+/**
+ * 分发系统启动
+ */
+public class DispatchServer {
+
     public static void main(String[] args) throws InterruptedException {
-
-        PushManager pushManager = new PushManager();
-        pushManager.start();
-
-        DispatcherInstanceManager dispatcherInstanceManager =  DispatcherInstanceManager.getInstance();
-        dispatcherInstanceManager.init();
 
         NioEventLoopGroup boss = new NioEventLoopGroup();
         NioEventLoopGroup worker = new NioEventLoopGroup();
@@ -33,9 +29,9 @@ public class GatewayTcpServer {
                 @Override
                 protected void initChannel(SocketChannel socketChannel) throws Exception {
                     ByteBuf delimit = Unpooled.copiedBuffer("$_".getBytes());
-                    socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(4096, delimit));
-//                    socketChannel.pipeline().addLast(new StringDecoder());
-                    socketChannel.pipeline().addLast(new GatewayTcpHandler());
+                    socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, delimit));
+                    socketChannel.pipeline().addLast(new StringDecoder());
+                    socketChannel.pipeline().addLast(new DispatcherHandler());
                 }
             });
             ChannelFuture channelFuture = serverBootstrap.bind(8080).sync();
