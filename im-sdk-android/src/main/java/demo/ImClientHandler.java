@@ -1,5 +1,6 @@
 package demo;
 
+import demo.protocal.AuthResponseProto;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
@@ -11,8 +12,11 @@ public class ImClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        String message = (String) msg;
-        System.out.println("TCP收到的消息:"+message);
+        Response response = new Response((ByteBuf) msg);
+        if (response.getRequestType()== Constants.REQUEST_TYPE_AUTH){
+            AuthResponseProto.AuthResponse authResponseProto = AuthResponseProto.AuthResponse.parseFrom(response.getBody());
+            System.out.println("认证请求:"+authResponseProto.toString());
+        }
     }
 
     @Override

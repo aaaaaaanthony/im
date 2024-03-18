@@ -1,5 +1,8 @@
 package demo;
 
+import demo.protocal.AuthRequestProto;
+import demo.protocal.AuthResponseProto;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.socket.SocketChannel;
@@ -27,6 +30,17 @@ public class    DispatcherHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+
+        RequestHandler requestHandler = RequestHandler.getInstance();
+        Request request = new Request((ByteBuf) msg);
+
+        if (request.getRequestType() == Constants.REQUEST_TYPE_AUTH) {
+            // 找单点登录系统去认证
+            AuthRequestProto.AuthRequest auth = AuthRequestProto.AuthRequest.parseFrom(request.getBody());
+            AuthResponseProto.AuthResponse authResponse = requestHandler.auth(auth);
+            Response response = new Response(request, authResponse.toByteArray());
+            ctx.writeAndFlush(response.getBuffer());
+        }
 
     }
 

@@ -15,29 +15,32 @@ import io.netty.handler.codec.string.StringDecoder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class DispatcherInstanceManager {
 
-    private DispatcherInstanceManager() {
-
-    }
-
+    private DispatcherInstanceManager() {}
+    static class Singleton{ static DispatcherInstanceManager instance = new DispatcherInstanceManager();}
     private static List<DispatcherInstanceAddress> dispatcherInstanceAddresses = new ArrayList<>();
 
-    static {
-        dispatcherInstanceAddresses.add(new DispatcherInstanceAddress("localhost", "127.0.0.1", 8090));
-    }
+    static {dispatcherInstanceAddresses.add(new DispatcherInstanceAddress("localhost", "127.0.0.1", 8090));}
 
-    static class Singleton{
-        static DispatcherInstanceManager instance = new DispatcherInstanceManager();
+
+    /**
+     * 随机选择一个分发实例
+     */
+    public DispatcherInstance chooseDispatcherInstance() {
+        Random random = new Random();
+        int i = random.nextInt(dispatcherInstances.size());
+        return dispatcherInstances.get(i);
     }
 
     public static DispatcherInstanceManager getInstance() {
         return Singleton.instance;
     }
 
-    private List<SocketChannel> dispatcherInstances = new CopyOnWriteArrayList<>();
+    private List<DispatcherInstance> dispatcherInstances = new CopyOnWriteArrayList<>();
 
     public void init() throws InterruptedException {
         for (DispatcherInstanceAddress dispatcherInstanceAddress : dispatcherInstanceAddresses) {
@@ -59,7 +62,7 @@ public class DispatcherInstanceManager {
                 ByteBuf delimit = Unpooled.copiedBuffer("$_".getBytes());
                 socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, delimit));
                 socketChannel.pipeline().addLast(new StringDecoder());
-                socketChannel.pipeline().addLast(new DispatcherClientHandler());
+                socketChannel.pipeline().addLast(new DispatcherInstanceHandler());
             }
         });
 
@@ -70,7 +73,8 @@ public class DispatcherInstanceManager {
         channelFuture.addListener((ChannelFutureListener) channelFuture1 -> {
             if (channelFuture1.isSuccess()) {
                 SocketChannel socketChannel = (SocketChannel) channelFuture1.channel();
-                dispatcherInstances.add(socketChannel);
+                DispatcherInstance dispatcherInstance = new DispatcherInstance(socketChannel);
+                dispatcherInstances.add(dispatcherInstance);
 
             }else {
                 channelFuture1.channel().close();

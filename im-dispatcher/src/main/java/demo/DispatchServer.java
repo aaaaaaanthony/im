@@ -29,8 +29,7 @@ public class DispatchServer {
                 @Override
                 protected void initChannel(SocketChannel socketChannel) throws Exception {
                     ByteBuf delimit = Unpooled.copiedBuffer("$_".getBytes());
-                    socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, delimit));
-                    socketChannel.pipeline().addLast(new StringDecoder());
+                    socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(4096, delimit));
                     socketChannel.pipeline().addLast(new DispatcherHandler());
                 }
             });

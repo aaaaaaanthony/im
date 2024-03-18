@@ -7,22 +7,11 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.string.StringDecoder;
 
 public class ImClient {
 
-    // 消息头的长度
-    private static final int request_header_length = 20;
-    // app sdk版本号
-    private static final int app_sdk_version = 1;
-    // 请求类型:用户认证
-    private static final int request_type_auth = 1;
-    // 消息顺序
-    private static final int sequene_default = 1;
-    private static final byte[] delimit = "$_".getBytes();
 
     private SocketChannel socketChannel;
 
@@ -65,25 +54,19 @@ public class ImClient {
     }
 
     public void auth(String userId,String token){
-        byte[] messageBytes = ("发起用户认证|"+userId+"|"+token+"$_").getBytes();
-
-
         AuthRequestProto.AuthRequest body = AuthRequestProto.AuthRequest.newBuilder()
                 .setUid(userId)
                 .setToken(token)
                 .setTimestamp(System.currentTimeMillis())
                 .build();
-        byte[] byteArray = body.toByteArray();
 
-        ByteBuf messageBuf = Unpooled.buffer(request_header_length+byteArray.length+delimit.length);
-        messageBuf.writeInt(request_header_length);
-        messageBuf.writeInt(app_sdk_version);
-        messageBuf.writeInt(request_type_auth);
-        messageBuf.writeInt(sequene_default);
-        messageBuf.writeInt(byteArray.length);
-        messageBuf.writeBytes(byteArray);
-        messageBuf.writeBytes(delimit);
-        socketChannel.writeAndFlush(messageBuf);
+        Request request = new Request(
+                Constants.APP_SDK_VERSION_1,
+                Constants.REQUEST_TYPE_AUTH,
+                Constants.SEQUENCE_DEFAULT,
+                body.toByteArray());
+
+        socketChannel.writeAndFlush(request.getByteBuf());
         System.out.println("向TCP接入系统发起用户认证请求");
     }
 

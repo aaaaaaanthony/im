@@ -1,7 +1,8 @@
 package demo;
 
+import demo.protocal.AuthRequestProto;
+import demo.protocal.AuthResponseProto;
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.socket.SocketChannel;
@@ -27,35 +28,19 @@ public class GatewayTcpHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ClientManager clientManager = ClientManager.getInstance();
-        ByteBuf msg1 = (ByteBuf) msg;
+        // 获取请求处理组件
+        ByteBuf requestBuffer = (ByteBuf) msg;
+        Request request = new Request(requestBuffer);
 
-        System.out.println("服务端收到消息===>"+message);
+        RequestHandler requestHandler = RequestHandler.getInstance();
 
-        if (message.startsWith("发起用户认证")) {
-            String token = message.split("\\|")[2];
-
-            // 拿到这个token,进行校验,这里就不写逻辑了
-
-            // 如果认证成功的话,就可以把这个连接缓存起来了
-            String userId = message.split("\\|")[1];
-            clientManager.addClient(userId, (SocketChannel) ctx.channel());
-            System.out.println("对用户发起的认证确认完毕,缓存客户端长连接:" + ctx.channel().remoteAddress().toString());
-
-        }else {
-            String userId = message.split("\\|")[1];
-            if (clientManager.isClientConnected(userId)) {
-                System.out.println("未认证用户,不能处理请求");
-                byte[] responseBuf = "未认证用户,不能处理请求$_".getBytes();
-                ByteBuf buffer = Unpooled.buffer(responseBuf.length);
-                buffer.writeBytes(responseBuf);
-                ctx.writeAndFlush(buffer);
-            }else {
-                System.out.println("将消息分发出去到KafKa:" + message);
-            }
-
+        // 如果是认证请求
+        if (request.getRequestType() == Constants.REQUEST_TYPE_AUTH) {
+            AuthRequestProto.AuthRequest authRequest = AuthRequestProto.AuthRequest.parseFrom(request.getBody());
+            // 调用业务逻辑组件进行认证
+            requestHandler.auth(authRequest);
         }
-
+        System.out.println("服务端收到消息===>" + request.getBody().length);
 
     }
 
