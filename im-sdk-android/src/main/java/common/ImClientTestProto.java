@@ -1,9 +1,8 @@
-package demo;
+package common;
 
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import demo.protocal.AuthRequestProto;
-import demo.protocal.AuthResponseProto;
+import common.protocal.AuthRequestProto;
 
 public class ImClientTestProto {
 

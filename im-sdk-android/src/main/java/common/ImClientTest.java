@@ -1,4 +1,4 @@
-package demo;
+package common;
 
 
 public class ImClientTest {

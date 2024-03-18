@@ -2,7 +2,7 @@
 // source: AuthResponse.proto
 
 // Protobuf Java Version: 3.25.3
-package demo.protocal;
+package common.protocal;
 
 public final class AuthResponseProto {
   private AuthResponseProto() {}
@@ -35,13 +35,43 @@ public final class AuthResponseProto {
      * <code>string errorMessage = 3;</code>
      * @return The errorMessage.
      */
-    java.lang.String getErrorMessage();
+    String getErrorMessage();
     /**
      * <code>string errorMessage = 3;</code>
      * @return The bytes for errorMessage.
      */
     com.google.protobuf.ByteString
         getErrorMessageBytes();
+
+    /**
+     * <code>string uid = 4;</code>
+     * @return The uid.
+     */
+    String getUid();
+    /**
+     * <code>string uid = 4;</code>
+     * @return The bytes for uid.
+     */
+    com.google.protobuf.ByteString
+        getUidBytes();
+
+    /**
+     * <code>string token = 5;</code>
+     * @return The token.
+     */
+    String getToken();
+    /**
+     * <code>string token = 5;</code>
+     * @return The bytes for token.
+     */
+    com.google.protobuf.ByteString
+        getTokenBytes();
+
+    /**
+     * <code>int64 timestamp = 6;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
   }
   /**
    * Protobuf type {@code AuthResponse}
@@ -57,26 +87,28 @@ public final class AuthResponseProto {
     }
     private AuthResponse() {
       errorMessage_ = "";
+      uid_ = "";
+      token_ = "";
     }
 
-    @java.lang.Override
+    @Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
+    protected Object newInstance(
         UnusedPrivateParameter unused) {
       return new AuthResponse();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return demo.protocal.AuthResponseProto.internal_static_AuthResponse_descriptor;
+      return AuthResponseProto.internal_static_AuthResponse_descriptor;
     }
 
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    @Override
+    protected FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return demo.protocal.AuthResponseProto.internal_static_AuthResponse_fieldAccessorTable
+      return AuthResponseProto.internal_static_AuthResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              demo.protocal.AuthResponseProto.AuthResponse.class, demo.protocal.AuthResponseProto.AuthResponse.Builder.class);
+              AuthResponse.class, Builder.class);
     }
 
     public static final int STATUS_FIELD_NUMBER = 1;
@@ -85,7 +117,7 @@ public final class AuthResponseProto {
      * <code>int32 status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override
+    @Override
     public int getStatus() {
       return status_;
     }
@@ -96,27 +128,27 @@ public final class AuthResponseProto {
      * <code>int32 errorCode = 2;</code>
      * @return The errorCode.
      */
-    @java.lang.Override
+    @Override
     public int getErrorCode() {
       return errorCode_;
     }
 
     public static final int ERRORMESSAGE_FIELD_NUMBER = 3;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object errorMessage_ = "";
+    private volatile Object errorMessage_ = "";
     /**
      * <code>string errorMessage = 3;</code>
      * @return The errorMessage.
      */
-    @java.lang.Override
-    public java.lang.String getErrorMessage() {
-      java.lang.Object ref = errorMessage_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    @Override
+    public String getErrorMessage() {
+      Object ref = errorMessage_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         errorMessage_ = s;
         return s;
       }
@@ -125,14 +157,14 @@ public final class AuthResponseProto {
      * <code>string errorMessage = 3;</code>
      * @return The bytes for errorMessage.
      */
-    @java.lang.Override
+    @Override
     public com.google.protobuf.ByteString
         getErrorMessageBytes() {
-      java.lang.Object ref = errorMessage_;
-      if (ref instanceof java.lang.String) {
+      Object ref = errorMessage_;
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         errorMessage_ = b;
         return b;
       } else {
@@ -140,8 +172,97 @@ public final class AuthResponseProto {
       }
     }
 
+    public static final int UID_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private volatile Object uid_ = "";
+    /**
+     * <code>string uid = 4;</code>
+     * @return The uid.
+     */
+    @Override
+    public String getUid() {
+      Object ref = uid_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        uid_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string uid = 4;</code>
+     * @return The bytes for uid.
+     */
+    @Override
+    public com.google.protobuf.ByteString
+        getUidBytes() {
+      Object ref = uid_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        uid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TOKEN_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private volatile Object token_ = "";
+    /**
+     * <code>string token = 5;</code>
+     * @return The token.
+     */
+    @Override
+    public String getToken() {
+      Object ref = token_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        token_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string token = 5;</code>
+     * @return The bytes for token.
+     */
+    @Override
+    public com.google.protobuf.ByteString
+        getTokenBytes() {
+      Object ref = token_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        token_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 6;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 6;</code>
+     * @return The timestamp.
+     */
+    @Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
+    @Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -151,7 +272,7 @@ public final class AuthResponseProto {
       return true;
     }
 
-    @java.lang.Override
+    @Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (status_ != 0) {
@@ -163,10 +284,19 @@ public final class AuthResponseProto {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errorMessage_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, errorMessage_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uid_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, uid_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(token_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, token_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(6, timestamp_);
+      }
       getUnknownFields().writeTo(output);
     }
 
-    @java.lang.Override
+    @Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -183,20 +313,30 @@ public final class AuthResponseProto {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errorMessage_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, errorMessage_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uid_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, uid_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(token_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, token_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(6, timestamp_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
+    @Override
+    public boolean equals(final Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof demo.protocal.AuthResponseProto.AuthResponse)) {
+      if (!(obj instanceof AuthResponse)) {
         return super.equals(obj);
       }
-      demo.protocal.AuthResponseProto.AuthResponse other = (demo.protocal.AuthResponseProto.AuthResponse) obj;
+      AuthResponse other = (AuthResponse) obj;
 
       if (getStatus()
           != other.getStatus()) return false;
@@ -204,11 +344,17 @@ public final class AuthResponseProto {
           != other.getErrorCode()) return false;
       if (!getErrorMessage()
           .equals(other.getErrorMessage())) return false;
+      if (!getUid()
+          .equals(other.getUid())) return false;
+      if (!getToken()
+          .equals(other.getToken())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
 
-    @java.lang.Override
+    @Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -221,49 +367,56 @@ public final class AuthResponseProto {
       hash = (53 * hash) + getErrorCode();
       hash = (37 * hash) + ERRORMESSAGE_FIELD_NUMBER;
       hash = (53 * hash) + getErrorMessage().hashCode();
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + getUid().hashCode();
+      hash = (37 * hash) + TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getToken().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static demo.protocal.AuthResponseProto.AuthResponse parseFrom(
+    public static AuthResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static demo.protocal.AuthResponseProto.AuthResponse parseFrom(
+    public static AuthResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static demo.protocal.AuthResponseProto.AuthResponse parseFrom(
+    public static AuthResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static demo.protocal.AuthResponseProto.AuthResponse parseFrom(
+    public static AuthResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static demo.protocal.AuthResponseProto.AuthResponse parseFrom(byte[] data)
+    public static AuthResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static demo.protocal.AuthResponseProto.AuthResponse parseFrom(
+    public static AuthResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static demo.protocal.AuthResponseProto.AuthResponse parseFrom(java.io.InputStream input)
+    public static AuthResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static demo.protocal.AuthResponseProto.AuthResponse parseFrom(
+    public static AuthResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -271,26 +424,26 @@ public final class AuthResponseProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static demo.protocal.AuthResponseProto.AuthResponse parseDelimitedFrom(java.io.InputStream input)
+    public static AuthResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static demo.protocal.AuthResponseProto.AuthResponse parseDelimitedFrom(
+    public static AuthResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static demo.protocal.AuthResponseProto.AuthResponse parseFrom(
+    public static AuthResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static demo.protocal.AuthResponseProto.AuthResponse parseFrom(
+    public static AuthResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -298,23 +451,23 @@ public final class AuthResponseProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
+    @Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(demo.protocal.AuthResponseProto.AuthResponse prototype) {
+    public static Builder newBuilder(AuthResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
+    @Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -324,18 +477,18 @@ public final class AuthResponseProto {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:AuthResponse)
-        demo.protocal.AuthResponseProto.AuthResponseOrBuilder {
+        AuthResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return demo.protocal.AuthResponseProto.internal_static_AuthResponse_descriptor;
+        return AuthResponseProto.internal_static_AuthResponse_descriptor;
       }
 
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      @Override
+      protected FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return demo.protocal.AuthResponseProto.internal_static_AuthResponse_fieldAccessorTable
+        return AuthResponseProto.internal_static_AuthResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                demo.protocal.AuthResponseProto.AuthResponse.class, demo.protocal.AuthResponseProto.AuthResponse.Builder.class);
+                AuthResponse.class, Builder.class);
       }
 
       // Construct using demo.protocal.AuthResponseProto.AuthResponse.newBuilder()
@@ -344,49 +497,52 @@ public final class AuthResponseProto {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          BuilderParent parent) {
         super(parent);
 
       }
-      @java.lang.Override
+      @Override
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
         status_ = 0;
         errorCode_ = 0;
         errorMessage_ = "";
+        uid_ = "";
+        token_ = "";
+        timestamp_ = 0L;
         return this;
       }
 
-      @java.lang.Override
+      @Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return demo.protocal.AuthResponseProto.internal_static_AuthResponse_descriptor;
+        return AuthResponseProto.internal_static_AuthResponse_descriptor;
       }
 
-      @java.lang.Override
-      public demo.protocal.AuthResponseProto.AuthResponse getDefaultInstanceForType() {
-        return demo.protocal.AuthResponseProto.AuthResponse.getDefaultInstance();
+      @Override
+      public AuthResponse getDefaultInstanceForType() {
+        return AuthResponse.getDefaultInstance();
       }
 
-      @java.lang.Override
-      public demo.protocal.AuthResponseProto.AuthResponse build() {
-        demo.protocal.AuthResponseProto.AuthResponse result = buildPartial();
+      @Override
+      public AuthResponse build() {
+        AuthResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @java.lang.Override
-      public demo.protocal.AuthResponseProto.AuthResponse buildPartial() {
-        demo.protocal.AuthResponseProto.AuthResponse result = new demo.protocal.AuthResponseProto.AuthResponse(this);
+      @Override
+      public AuthResponse buildPartial() {
+        AuthResponse result = new AuthResponse(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(demo.protocal.AuthResponseProto.AuthResponse result) {
+      private void buildPartial0(AuthResponse result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.status_ = status_;
@@ -397,52 +553,61 @@ public final class AuthResponseProto {
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.errorMessage_ = errorMessage_;
         }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.uid_ = uid_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.token_ = token_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
       }
 
-      @java.lang.Override
+      @Override
       public Builder clone() {
         return super.clone();
       }
-      @java.lang.Override
+      @Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          Object value) {
         return super.setField(field, value);
       }
-      @java.lang.Override
+      @Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-      @java.lang.Override
+      @Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-      @java.lang.Override
+      @Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index, Object value) {
         return super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
+      @Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          Object value) {
         return super.addRepeatedField(field, value);
       }
-      @java.lang.Override
+      @Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof demo.protocal.AuthResponseProto.AuthResponse) {
-          return mergeFrom((demo.protocal.AuthResponseProto.AuthResponse)other);
+        if (other instanceof AuthResponse) {
+          return mergeFrom((AuthResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(demo.protocal.AuthResponseProto.AuthResponse other) {
-        if (other == demo.protocal.AuthResponseProto.AuthResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(AuthResponse other) {
+        if (other == AuthResponse.getDefaultInstance()) return this;
         if (other.getStatus() != 0) {
           setStatus(other.getStatus());
         }
@@ -454,23 +619,36 @@ public final class AuthResponseProto {
           bitField0_ |= 0x00000004;
           onChanged();
         }
+        if (!other.getUid().isEmpty()) {
+          uid_ = other.uid_;
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        if (!other.getToken().isEmpty()) {
+          token_ = other.token_;
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
       }
 
-      @java.lang.Override
+      @Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
+      @Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
+          throw new NullPointerException();
         }
         try {
           boolean done = false;
@@ -495,6 +673,21 @@ public final class AuthResponseProto {
                 bitField0_ |= 0x00000004;
                 break;
               } // case 26
+              case 34: {
+                uid_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                token_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 48: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 48
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -517,7 +710,7 @@ public final class AuthResponseProto {
        * <code>int32 status = 1;</code>
        * @return The status.
        */
-      @java.lang.Override
+      @Override
       public int getStatus() {
         return status_;
       }
@@ -549,7 +742,7 @@ public final class AuthResponseProto {
        * <code>int32 errorCode = 2;</code>
        * @return The errorCode.
        */
-      @java.lang.Override
+      @Override
       public int getErrorCode() {
         return errorCode_;
       }
@@ -576,21 +769,21 @@ public final class AuthResponseProto {
         return this;
       }
 
-      private java.lang.Object errorMessage_ = "";
+      private Object errorMessage_ = "";
       /**
        * <code>string errorMessage = 3;</code>
        * @return The errorMessage.
        */
-      public java.lang.String getErrorMessage() {
-        java.lang.Object ref = errorMessage_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getErrorMessage() {
+        Object ref = errorMessage_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           errorMessage_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -599,11 +792,11 @@ public final class AuthResponseProto {
        */
       public com.google.protobuf.ByteString
           getErrorMessageBytes() {
-        java.lang.Object ref = errorMessage_;
+        Object ref = errorMessage_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           errorMessage_ = b;
           return b;
         } else {
@@ -616,7 +809,7 @@ public final class AuthResponseProto {
        * @return This builder for chaining.
        */
       public Builder setErrorMessage(
-          java.lang.String value) {
+          String value) {
         if (value == null) { throw new NullPointerException(); }
         errorMessage_ = value;
         bitField0_ |= 0x00000004;
@@ -647,13 +840,189 @@ public final class AuthResponseProto {
         onChanged();
         return this;
       }
-      @java.lang.Override
+
+      private Object uid_ = "";
+      /**
+       * <code>string uid = 4;</code>
+       * @return The uid.
+       */
+      public String getUid() {
+        Object ref = uid_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          uid_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>string uid = 4;</code>
+       * @return The bytes for uid.
+       */
+      public com.google.protobuf.ByteString
+          getUidBytes() {
+        Object ref = uid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          uid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string uid = 4;</code>
+       * @param value The uid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUid(
+          String value) {
+        if (value == null) { throw new NullPointerException(); }
+        uid_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string uid = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUid() {
+        uid_ = getDefaultInstance().getUid();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string uid = 4;</code>
+       * @param value The bytes for uid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        uid_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+
+      private Object token_ = "";
+      /**
+       * <code>string token = 5;</code>
+       * @return The token.
+       */
+      public String getToken() {
+        Object ref = token_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          token_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>string token = 5;</code>
+       * @return The bytes for token.
+       */
+      public com.google.protobuf.ByteString
+          getTokenBytes() {
+        Object ref = token_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          token_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string token = 5;</code>
+       * @param value The token to set.
+       * @return This builder for chaining.
+       */
+      public Builder setToken(
+          String value) {
+        if (value == null) { throw new NullPointerException(); }
+        token_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string token = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearToken() {
+        token_ = getDefaultInstance().getToken();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string token = 5;</code>
+       * @param value The bytes for token to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        token_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 6;</code>
+       * @return The timestamp.
+       */
+      @Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 6;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+      @Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
       }
 
-      @java.lang.Override
+      @Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
@@ -664,18 +1033,18 @@ public final class AuthResponseProto {
     }
 
     // @@protoc_insertion_point(class_scope:AuthResponse)
-    private static final demo.protocal.AuthResponseProto.AuthResponse DEFAULT_INSTANCE;
+    private static final AuthResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new demo.protocal.AuthResponseProto.AuthResponse();
+      DEFAULT_INSTANCE = new AuthResponse();
     }
 
-    public static demo.protocal.AuthResponseProto.AuthResponse getDefaultInstance() {
+    public static AuthResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<AuthResponse>
         PARSER = new com.google.protobuf.AbstractParser<AuthResponse>() {
-      @java.lang.Override
+      @Override
       public AuthResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -699,13 +1068,13 @@ public final class AuthResponseProto {
       return PARSER;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Parser<AuthResponse> getParserForType() {
       return PARSER;
     }
 
-    @java.lang.Override
-    public demo.protocal.AuthResponseProto.AuthResponse getDefaultInstanceForType() {
+    @Override
+    public AuthResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -724,11 +1093,12 @@ public final class AuthResponseProto {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    java.lang.String[] descriptorData = {
-      "\n\022AuthResponse.proto\"G\n\014AuthResponse\022\016\n\006" +
+    String[] descriptorData = {
+      "\n\022AuthResponse.proto\"v\n\014AuthResponse\022\016\n\006" +
       "status\030\001 \001(\005\022\021\n\terrorCode\030\002 \001(\005\022\024\n\014error" +
-      "Message\030\003 \001(\tB\"\n\rdemo.protocalB\021AuthResp" +
-      "onseProtob\006proto3"
+      "Message\030\003 \001(\t\022\013\n\003uid\030\004 \001(\t\022\r\n\005token\030\005 \001(" +
+      "\t\022\021\n\ttimestamp\030\006 \001(\003B\"\n\rdemo.protocalB\021A" +
+      "uthResponseProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -739,7 +1109,7 @@ public final class AuthResponseProto {
     internal_static_AuthResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AuthResponse_descriptor,
-        new java.lang.String[] { "Status", "ErrorCode", "ErrorMessage", });
+        new String[] { "Status", "ErrorCode", "ErrorMessage", "Uid", "Token", "Timestamp", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

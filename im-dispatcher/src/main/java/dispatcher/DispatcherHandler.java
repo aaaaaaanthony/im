@@ -1,18 +1,23 @@
-package demo;
+package dispatcher;
 
-import demo.protocal.AuthRequestProto;
-import demo.protocal.AuthResponseProto;
+import common.Constants;
+import common.Request;
+import common.Response;
+import common.protocal.AuthRequestProto;
+import common.protocal.AuthResponseProto;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.socket.SocketChannel;
 
-public class GatewayTcpHandler extends ChannelInboundHandlerAdapter {
+public class    DispatcherHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        SocketChannel channel = (SocketChannel) ctx.channel();
+        GatewayInstanceManager instance = GatewayInstanceManager.getInstance();
+        instance.addGatewayInstance(channel.id().asLongText(), channel);
         System.out.println("跟客户端完成连接:"+ctx.channel().remoteAddress().toString());
-
     }
 
     /**
@@ -21,26 +26,24 @@ public class GatewayTcpHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         SocketChannel channel = (SocketChannel) ctx.channel();
-        ClientManager instance = ClientManager.getInstance();
-        instance.removeChannel(channel);
+        GatewayInstanceManager instance = GatewayInstanceManager.getInstance();
+        instance.removeGatewayInstance(channel.id().asLongText());
         System.out.println("断开连接:" + ctx.channel().remoteAddress().toString());
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        // 获取请求处理组件
-        ByteBuf requestBuffer = (ByteBuf) msg;
-        Request request = new Request(requestBuffer);
 
         RequestHandler requestHandler = RequestHandler.getInstance();
+        Request request = new Request((ByteBuf) msg);
 
-        // 如果是认证请求
         if (request.getRequestType() == Constants.REQUEST_TYPE_AUTH) {
-            AuthRequestProto.AuthRequest authRequest = AuthRequestProto.AuthRequest.parseFrom(request.getBody());
-            // 调用业务逻辑组件进行认证
-            requestHandler.auth(authRequest);
+            // 找单点登录系统去认证
+            AuthRequestProto.AuthRequest auth = AuthRequestProto.AuthRequest.parseFrom(request.getBody());
+            AuthResponseProto.AuthResponse authResponse = requestHandler.auth(auth);
+            Response response = new Response(request, authResponse.toByteArray());
+            ctx.writeAndFlush(response.getBuffer());
         }
-        System.out.println("服务端收到消息===>" + request.getBody().length);
 
     }
 
@@ -51,7 +54,6 @@ public class GatewayTcpHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        cause.printStackTrace();
         ctx.close();
     }
 }

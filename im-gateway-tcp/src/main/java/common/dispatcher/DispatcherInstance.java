@@ -1,9 +1,8 @@
-package demo.dispatcher;
+package common.dispatcher;
 
-import demo.Constants;
-import demo.Request;
-import demo.protocal.AuthRequestProto;
-import demo.protocal.AuthResponseProto;
+import common.Constants;
+import common.Request;
+import common.protocal.AuthRequestProto;
 import io.netty.channel.socket.SocketChannel;
 
 /**

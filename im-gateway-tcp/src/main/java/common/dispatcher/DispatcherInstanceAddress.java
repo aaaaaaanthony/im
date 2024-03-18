@@ -1,4 +1,4 @@
-package demo.dispatcher;
+package common.dispatcher;
 
 public class DispatcherInstanceAddress {
 

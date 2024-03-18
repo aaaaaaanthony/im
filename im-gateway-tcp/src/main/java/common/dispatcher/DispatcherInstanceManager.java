@@ -1,4 +1,4 @@
-package demo.dispatcher;
+package common.dispatcher;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;

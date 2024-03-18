@@ -2,7 +2,7 @@
 // source: AuthRequest.proto
 
 // Protobuf Java Version: 3.25.3
-package demo.protocal;
+package common.protocal;
 
 public final class AuthRequestProto {
   private AuthRequestProto() {}
@@ -75,15 +75,15 @@ public final class AuthRequestProto {
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return demo.protocal.AuthRequestProto.internal_static_AuthRequest_descriptor;
+      return common.protocal.AuthRequestProto.internal_static_AuthRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return demo.protocal.AuthRequestProto.internal_static_AuthRequest_fieldAccessorTable
+      return common.protocal.AuthRequestProto.internal_static_AuthRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              demo.protocal.AuthRequestProto.AuthRequest.class, demo.protocal.AuthRequestProto.AuthRequest.Builder.class);
+              common.protocal.AuthRequestProto.AuthRequest.class, common.protocal.AuthRequestProto.AuthRequest.Builder.class);
     }
 
     public static final int UID_FIELD_NUMBER = 1;
@@ -227,10 +227,10 @@ public final class AuthRequestProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof demo.protocal.AuthRequestProto.AuthRequest)) {
+      if (!(obj instanceof common.protocal.AuthRequestProto.AuthRequest)) {
         return super.equals(obj);
       }
-      demo.protocal.AuthRequestProto.AuthRequest other = (demo.protocal.AuthRequestProto.AuthRequest) obj;
+      common.protocal.AuthRequestProto.AuthRequest other = (common.protocal.AuthRequestProto.AuthRequest) obj;
 
       if (!getUid()
           .equals(other.getUid())) return false;
@@ -261,44 +261,44 @@ public final class AuthRequestProto {
       return hash;
     }
 
-    public static demo.protocal.AuthRequestProto.AuthRequest parseFrom(
+    public static common.protocal.AuthRequestProto.AuthRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static demo.protocal.AuthRequestProto.AuthRequest parseFrom(
+    public static common.protocal.AuthRequestProto.AuthRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static demo.protocal.AuthRequestProto.AuthRequest parseFrom(
+    public static common.protocal.AuthRequestProto.AuthRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static demo.protocal.AuthRequestProto.AuthRequest parseFrom(
+    public static common.protocal.AuthRequestProto.AuthRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static demo.protocal.AuthRequestProto.AuthRequest parseFrom(byte[] data)
+    public static common.protocal.AuthRequestProto.AuthRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static demo.protocal.AuthRequestProto.AuthRequest parseFrom(
+    public static common.protocal.AuthRequestProto.AuthRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static demo.protocal.AuthRequestProto.AuthRequest parseFrom(java.io.InputStream input)
+    public static common.protocal.AuthRequestProto.AuthRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static demo.protocal.AuthRequestProto.AuthRequest parseFrom(
+    public static common.protocal.AuthRequestProto.AuthRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -306,26 +306,26 @@ public final class AuthRequestProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static demo.protocal.AuthRequestProto.AuthRequest parseDelimitedFrom(java.io.InputStream input)
+    public static common.protocal.AuthRequestProto.AuthRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static demo.protocal.AuthRequestProto.AuthRequest parseDelimitedFrom(
+    public static common.protocal.AuthRequestProto.AuthRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static demo.protocal.AuthRequestProto.AuthRequest parseFrom(
+    public static common.protocal.AuthRequestProto.AuthRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static demo.protocal.AuthRequestProto.AuthRequest parseFrom(
+    public static common.protocal.AuthRequestProto.AuthRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -338,7 +338,7 @@ public final class AuthRequestProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(demo.protocal.AuthRequestProto.AuthRequest prototype) {
+    public static Builder newBuilder(common.protocal.AuthRequestProto.AuthRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -359,18 +359,18 @@ public final class AuthRequestProto {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:AuthRequest)
-        demo.protocal.AuthRequestProto.AuthRequestOrBuilder {
+        common.protocal.AuthRequestProto.AuthRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return demo.protocal.AuthRequestProto.internal_static_AuthRequest_descriptor;
+        return common.protocal.AuthRequestProto.internal_static_AuthRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return demo.protocal.AuthRequestProto.internal_static_AuthRequest_fieldAccessorTable
+        return common.protocal.AuthRequestProto.internal_static_AuthRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                demo.protocal.AuthRequestProto.AuthRequest.class, demo.protocal.AuthRequestProto.AuthRequest.Builder.class);
+                common.protocal.AuthRequestProto.AuthRequest.class, common.protocal.AuthRequestProto.AuthRequest.Builder.class);
       }
 
       // Construct using demo.protocal.AuthRequestProto.AuthRequest.newBuilder()
@@ -396,17 +396,17 @@ public final class AuthRequestProto {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return demo.protocal.AuthRequestProto.internal_static_AuthRequest_descriptor;
+        return common.protocal.AuthRequestProto.internal_static_AuthRequest_descriptor;
       }
 
       @java.lang.Override
-      public demo.protocal.AuthRequestProto.AuthRequest getDefaultInstanceForType() {
-        return demo.protocal.AuthRequestProto.AuthRequest.getDefaultInstance();
+      public common.protocal.AuthRequestProto.AuthRequest getDefaultInstanceForType() {
+        return common.protocal.AuthRequestProto.AuthRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public demo.protocal.AuthRequestProto.AuthRequest build() {
-        demo.protocal.AuthRequestProto.AuthRequest result = buildPartial();
+      public common.protocal.AuthRequestProto.AuthRequest build() {
+        common.protocal.AuthRequestProto.AuthRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -414,14 +414,14 @@ public final class AuthRequestProto {
       }
 
       @java.lang.Override
-      public demo.protocal.AuthRequestProto.AuthRequest buildPartial() {
-        demo.protocal.AuthRequestProto.AuthRequest result = new demo.protocal.AuthRequestProto.AuthRequest(this);
+      public common.protocal.AuthRequestProto.AuthRequest buildPartial() {
+        common.protocal.AuthRequestProto.AuthRequest result = new common.protocal.AuthRequestProto.AuthRequest(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(demo.protocal.AuthRequestProto.AuthRequest result) {
+      private void buildPartial0(common.protocal.AuthRequestProto.AuthRequest result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.uid_ = uid_;
@@ -468,16 +468,16 @@ public final class AuthRequestProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof demo.protocal.AuthRequestProto.AuthRequest) {
-          return mergeFrom((demo.protocal.AuthRequestProto.AuthRequest)other);
+        if (other instanceof common.protocal.AuthRequestProto.AuthRequest) {
+          return mergeFrom((common.protocal.AuthRequestProto.AuthRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(demo.protocal.AuthRequestProto.AuthRequest other) {
-        if (other == demo.protocal.AuthRequestProto.AuthRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(common.protocal.AuthRequestProto.AuthRequest other) {
+        if (other == common.protocal.AuthRequestProto.AuthRequest.getDefaultInstance()) return this;
         if (!other.getUid().isEmpty()) {
           uid_ = other.uid_;
           bitField0_ |= 0x00000001;
@@ -741,12 +741,12 @@ public final class AuthRequestProto {
     }
 
     // @@protoc_insertion_point(class_scope:AuthRequest)
-    private static final demo.protocal.AuthRequestProto.AuthRequest DEFAULT_INSTANCE;
+    private static final common.protocal.AuthRequestProto.AuthRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new demo.protocal.AuthRequestProto.AuthRequest();
+      DEFAULT_INSTANCE = new common.protocal.AuthRequestProto.AuthRequest();
     }
 
-    public static demo.protocal.AuthRequestProto.AuthRequest getDefaultInstance() {
+    public static common.protocal.AuthRequestProto.AuthRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -782,7 +782,7 @@ public final class AuthRequestProto {
     }
 
     @java.lang.Override
-    public demo.protocal.AuthRequestProto.AuthRequest getDefaultInstanceForType() {
+    public common.protocal.AuthRequestProto.AuthRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 

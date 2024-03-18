@@ -1,6 +1,6 @@
-package demo.push;
+package common.push;
 
-import demo.ClientManager;
+import common.SessionManager;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.socket.SocketChannel;
@@ -25,8 +25,8 @@ public class PushManager {
 
                     String userId = "anthony";
 
-                    ClientManager clientManager = ClientManager.getInstance();
-                    SocketChannel channels = clientManager.getClient(userId);
+                    SessionManager sessionManager = SessionManager.getInstance();
+                    SocketChannel channels = sessionManager.getSession(userId);
 
                     if (channels != null) {
                         byte[] responseBuf = "未认证用户,不能处理请求$_".getBytes();

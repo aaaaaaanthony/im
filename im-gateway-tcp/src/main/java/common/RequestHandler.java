@@ -1,11 +1,8 @@
-package demo;
+package common;
 
-import demo.dispatcher.DispatcherInstance;
-import demo.dispatcher.DispatcherInstanceManager;
-import demo.protocal.AuthRequestProto;
-import demo.protocal.AuthResponseProto;
-import io.netty.channel.socket.SocketChannel;
-import sun.security.jca.GetInstance;
+import common.dispatcher.DispatcherInstance;
+import common.dispatcher.DispatcherInstanceManager;
+import common.protocal.AuthRequestProto;
 
 public class RequestHandler {
 

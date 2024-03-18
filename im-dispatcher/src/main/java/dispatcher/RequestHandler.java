@@ -1,7 +1,8 @@
-package demo;
+package dispatcher;
 
-import demo.protocal.AuthRequestProto;
-import demo.protocal.AuthResponseProto;
+import common.Constants;
+import common.protocal.AuthRequestProto;
+import common.protocal.AuthResponseProto;
 
 /**
  * @author anthony
@@ -25,11 +26,11 @@ public class RequestHandler {
      * 处理认证请求
      */
     public AuthResponseProto.AuthResponse auth(AuthRequestProto.AuthRequest authRequest) {
-
-
         // 模拟验证账号
-
         AuthResponseProto.AuthResponse.Builder builder = AuthResponseProto.AuthResponse.newBuilder();
+        builder.setUid(authRequest.getUid());
+        builder.setToken(authRequest.getToken());
+        builder.setTimestamp(authRequest.getTimestamp());
         try {
 
             String uid = authRequest.getUid();

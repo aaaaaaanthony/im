@@ -1,7 +1,7 @@
-package demo;
+package common;
 
-import demo.dispatcher.DispatcherInstanceManager;
-import demo.push.PushManager;
+import common.dispatcher.DispatcherInstanceManager;
+import common.push.PushManager;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -11,7 +11,6 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.string.StringDecoder;
 
 public class GatewayTcpServer {
     public static void main(String[] args) throws InterruptedException {

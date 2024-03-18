@@ -1,10 +1,18 @@
-package demo;
+package common;
 
 public class Constants {
 
+    /**
+     * 消息类型是请求
+     */
+    public static final int MESSAGE_TYPE_REQUEST = 1;
+    /**
+     * 消息类型是响应
+     */
+    public static final int MESSAGE_TYPE_RESPONSE = 2;
 
     // 消息头的长度
-    public static final int HEADER_LENGTH = 20;
+    public static final int HEADER_LENGTH = 24;
     // app sdk版本号
     public static final int APP_SDK_VERSION_1 = 1;
     // 请求类型:用户认证
