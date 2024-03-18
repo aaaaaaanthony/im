@@ -3,6 +3,9 @@ package common;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
+/**
+ * @author anthony
+ */
 public class Message {
 
     /**
@@ -148,4 +151,6 @@ public class Message {
     public void setMessageType(int messageType) {
         this.messageType = messageType;
     }
+
+
 }

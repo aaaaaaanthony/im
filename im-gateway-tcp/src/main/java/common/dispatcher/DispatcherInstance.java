@@ -21,6 +21,6 @@ public class DispatcherInstance {
                 Constants.REQUEST_TYPE_AUTH,
                 Constants.SEQUENCE_DEFAULT,
                 authRequest.toByteArray());
-        socketChannel.writeAndFlush(request.getByteBuf());
+        socketChannel.writeAndFlush(request.getBuffer());
     }
 }
